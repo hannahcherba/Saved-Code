@@ -1,0 +1,42 @@
+* {
+    
+}
+.slider-container {
+    width: 300px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slider {
+    display: flex;
+    transition: transform 0.3s ease;
+  }
+  
+  .slider-item {
+    flex: 0 0 100px;
+    height: 100px;
+    margin-right: 10px;
+    background-color: lightblue;
+  }
+
+  .game {
+    
+  }
+  
+  .slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
