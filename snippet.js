@@ -1,29 +1,50 @@
 /*-----------------------------
 JS Slider
 ------------------------------*/
-const slider = document.querySelector('.slider');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
-const itemWidth = 110;
-let currentPosition = 0;
+// const slider = document.querySelector('.slider');
+// const prevButton = document.querySelector('.prev');
+// const nextButton = document.querySelector('.next');
+// const itemWidth = 110;
+// let currentPosition = 0;
 
-nextButton.addEventListener('click', () => {
-  currentPosition -= itemWidth;
-  if (currentPosition < -itemWidth * (slider.children.length - 3)) {
-    currentPosition = 0;
+// nextButton.addEventListener('click', () => {
+//   currentPosition -= itemWidth;
+//   if (currentPosition < -itemWidth * (slider.children.length - 3)) {
+//     currentPosition = 0;
+//   }
+//   slider.style.transform = `translateX(${currentPosition}px)`;
+// });
+
+// prevButton.addEventListener('click', () => {
+//   currentPosition += itemWidth;
+//   if (currentPosition > 0) {
+//     currentPosition = -itemWidth * (slider.children.length - 3);
+//   }
+//   slider.style.transform = `translateX(${currentPosition}px)`;
+// });
+
+
+
+
+const carousel = document.querySelector('.carousel');
+const leftArrow = document.querySelector('.arrow.left');
+const rightArrow = document.querySelector('.arrow.right');
+
+let translateX = 0;
+
+leftArrow.addEventListener('click', () => {
+  if (translateX < 0) {
+    translateX += carousel.offsetWidth / Math.floor(carousel.offsetWidth / carousel.firstElementChild.offsetWidth);
+    carousel.style.transform = `translateX(${translateX}px)`;
   }
-  slider.style.transform = `translateX(${currentPosition}px)`;
 });
 
-prevButton.addEventListener('click', () => {
-  currentPosition += itemWidth;
-  if (currentPosition > 0) {
-    currentPosition = -itemWidth * (slider.children.length - 3);
+rightArrow.addEventListener('click', () => {
+  if (translateX > -(carousel.scrollWidth - carousel.offsetWidth)) {
+    translateX -= carousel.offsetWidth / Math.floor(carousel.offsetWidth / carousel.firstElementChild.offsetWidth);
+    carousel.style.transform = `translateX(${translateX}px)`;
   }
-  slider.style.transform = `translateX(${currentPosition}px)`;
 });
-
-
 
 /*-----------------------------
 The JS Search
